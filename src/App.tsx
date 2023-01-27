@@ -1,3 +1,36 @@
-export const App = () => <div className="app">app</div>;
+import { useEffect, useState } from 'react';
+
+import { SelectedPage } from '@/common/types';
+import { Navbar } from '@/components';
+
+export const App = () => {
+  const [selectedPage, setSelectedPage] = useState<SelectedPage>(
+    SelectedPage.Home,
+  );
+  const [isPageTop, setTopPage] = useState<boolean>(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setTopPage(true);
+        setSelectedPage(SelectedPage.Home);
+      } else {
+        setTopPage(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="app">
+      <Navbar
+        isTopOfPage={isPageTop}
+        selectedPage={selectedPage}
+        setSelectedPage={setSelectedPage}
+      />
+    </div>
+  );
+};
 
 export default App;
