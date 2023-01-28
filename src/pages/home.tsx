@@ -8,7 +8,7 @@ import SponsorForbes from '@/assets/SponsorForbes.png';
 import SponsorFortune from '@/assets/SponsorFortune.png';
 import { SelectedPage } from '@/common/types';
 import { useIsAboveMedium } from '@/hooks';
-import { ActionButton } from '@/components/action-button';
+import { ActionButton } from '@/components';
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
