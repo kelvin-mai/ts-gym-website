@@ -4,7 +4,7 @@ import Logo from '@/assets/Logo.png';
 import { NavLink } from '@/components/navlink';
 import { flexBetween, pages } from '@/common/constants';
 import { SelectedPage } from '@/common/types';
-import { useMediaQuery, useToggle } from '@/hooks';
+import { useToggle, useIsAboveMedium } from '@/hooks';
 import { ActionButton } from '@/components/action-button';
 
 type Props = {
@@ -31,7 +31,7 @@ export const Navbar = ({
   selectedPage,
   setSelectedPage,
 }: Props) => {
-  const isAboveMedium = useMediaQuery('(min-width: 1060px)');
+  const isAboveMedium = useIsAboveMedium();
   const [isMenu, toggleMenu] = useToggle();
   const navbarBackground = isTopOfPage ? '' : 'bg-primary-100 drop-shadow';
   const navLinks = createNavLinks(selectedPage, setSelectedPage);
